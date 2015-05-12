@@ -42,7 +42,7 @@ Then(/^I should see:$/, function(datatable) {
 });
 
 Then(/^I should see the message "(.*?)"$/, function(msg) {
-  $("div").alert().getText();
+  $("div").alert().getText()
   //var msgValue = "Para continuar debe aceptar la política de protección de datos personales" //$("div").alert().accept();
   //expect(msg).to.be.equal(msgValue); 
   
