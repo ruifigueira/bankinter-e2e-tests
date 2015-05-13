@@ -22,8 +22,9 @@ Feature: Mortgages & Loans
     And I accept the terms
     And I click on button "Simular cuotas"
     Then I should see:
-      | Cuota mensual 1er año | 516,33 eur |
-      | Resto de años         | 512,14 eur |
+      | Cuota mensual 1er año      | 516,33 eur |
+      | Resto de años              | 512,14 eur |
+      | Tipo de interés primer año | 2,00       |
 
   Scenario: Simulate Mortgage not Accepting Terms
     When I simulate the following mortage:
