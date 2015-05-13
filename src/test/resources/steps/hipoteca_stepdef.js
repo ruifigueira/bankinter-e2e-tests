@@ -1,10 +1,25 @@
+var fillBirthDay = function(date){
+  var parsedDate = date.split("-");
+  //birthday
+  $("#dia_nac").fill(parsedDate[0]);
+  $("#mes_nac").fill(parsedDate[1]);
+  $("#anyo_nac").fill(parsedDate[2]);
+};
 
-When(/^I simulate the following mortage :$/, function(datatable) {
-  var inputs;
-  datatable.raw().forEach(function (row) {
-    inputs = $("input,select");
-    var colName = row[0];
-    var val = row[1];
+When(/^I simulate the following mortage:$/, function(datatable) {
+  
+  var values = datatable.rowsHash();
+  var inputs = $("input,select");
+  for (var prop in values) {
+    
+    var val = values[prop];
+    var colName = prop;
+    
+    if( colName == "Fecha nacimiento"){
+      fillBirthDay(val);
+      return;
+    }
+    
     var fieldInput = inputs.withLabel(colName);
     if (fieldInput.waitForExistence().is(":radio")) {
       fieldInput.withLabel(val).check();
@@ -13,17 +28,13 @@ When(/^I simulate the following mortage :$/, function(datatable) {
     } else {
        fieldInput.fill(val);
     }
-  });
+    
+    $("#contrato_fijo").check(); 
+  }
   
-  $("#contrato_fijo").check(); 
   
-  //birthday
-  $("#dia_nac").fill("12");
-  $("#mes_nac").fill("08");
-  $("#anyo_nac").fill("1960");
   
 });
-
 
 When(/^I accept the terms$/, function() {
   $("#policy").check();
@@ -36,15 +47,17 @@ Then(/^I should see:$/, function(datatable) {
      var colName = row[0];
      var val = row[1];
      var value = $("strong").below($("b").withText(colName)).eq(0);
-     
-     expect(val).to.have.text(val);
+      
+     expect(value).to.have.text(val);
   });
 });
 
+
 Then(/^I should see the message "(.*?)"$/, function(msg) {
-  $("div").alert().getText()
-  //var msgValue = "Para continuar debe aceptar la política de protección de datos personales" //$("div").alert().accept();
-  //expect(msg).to.be.equal(msgValue); 
+  
+  var alertMsg = String($("div").alert().getText());
+  expect(alertMsg).to.be(msg);
+  $("div").alert().accept();
   
 });
 
