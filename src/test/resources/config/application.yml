@@ -8,10 +8,7 @@ minium:
 
 # Configuration that can be injected in your tests
   config:
-    searches:
-      Minium Github:
-        - https://github.com/viltgroup/minium
-      Selenium:
-        - http://www.seleniumhq.org/
-        - http://en.wikipedia.org/wiki/Selenium
-    baseUrl: https://www.bankinter.com/www2/particulares/es/prestamos/elija_su_hipoteca
+    baseUrl: https://www.bankinter.com
+    pages:
+      "Home": "/www2/particulares/es/inicio/bienvenida"
+      "Bankinter Mortgages and Loans": "/www2/particulares/es/prestamos/elija_su_hipoteca"

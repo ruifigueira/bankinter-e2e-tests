@@ -1,5 +1,5 @@
-Given(/^I'm at Bankinter Mortgages and Loans page$/, function() {
-  browser.get(config.baseUrl);
+Given(/^I'm at (.*?) page$/, function(page) {
+  browser.get(config.baseUrl + config.pages[page]);
 });
 
 When(/^I click on button "(.*?)"$/, function(btnName) {
