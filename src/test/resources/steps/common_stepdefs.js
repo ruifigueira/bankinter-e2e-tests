@@ -8,6 +8,6 @@ When(/^I click on button "(.*?)"$/, function(btnName) {
 });
 
 When(/^I click on the menu "(.*?)"$/, function(menu) {
-  var menuItem =  $(".level1 li").withText(menu);
+  var menuItem =  $(".level1 li a").withText(menu);
   menuItem.click();
 });
