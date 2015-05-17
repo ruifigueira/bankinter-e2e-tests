@@ -2,7 +2,7 @@ Feature: Login
 
   Scenario Outline: Wrong Login
     Given I'm at Bankinter Mortgages and Loans page
-    When I click on the menu "Inicio"
+    When I click on the menu "Início"
     And I fill client form with:
       | Usuario    | <user> |
       | Contraseña | <pass> |
