@@ -7,7 +7,6 @@ var fillBirthDay = function(date){
 };
 
 When(/^I simulate the following mortage:$/, function(datatable) {
-  
   var values = datatable.rowsHash();
   var inputs = $("input,select");
   for (var prop in values) {
@@ -31,18 +30,13 @@ When(/^I simulate the following mortage:$/, function(datatable) {
     
     $("#contrato_fijo").check(); 
   }
-  
-  
-  
 });
 
 When(/^I accept the terms$/, function() {
   $("#policy").check();
 });
 
-
 Then(/^I should see:$/, function(datatable) {
-  
    datatable.raw().forEach(function (row) {
      var colName = row[0];
      var val = row[1];
@@ -52,12 +46,8 @@ Then(/^I should see:$/, function(datatable) {
   });
 });
 
-
 Then(/^I should see the message "(.*?)"$/, function(msg) {
-  
   var alertMsg = String($("div").alert().getText());
   expect(alertMsg).to.be(msg);
   $("div").alert().accept();
-  
 });
-

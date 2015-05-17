@@ -1,5 +1,4 @@
 When(/^I fill client form with:$/, function(datatable) {
-  
   var values = datatable.rowsHash();
   var inputs = $("input,select");
   for (var prop in values) {
@@ -11,10 +10,7 @@ When(/^I fill client form with:$/, function(datatable) {
   }
   
   $(".submit input").click()
-  
-  
 });
-
 
 Then(/^I should see the message error "(.*?)"$/, function(msg) {
   var elem = $(".container span").withText(msg);
